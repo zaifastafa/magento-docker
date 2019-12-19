@@ -1,0 +1,40 @@
+web:
+  image: hansphung/dockerized-magento-nginx:stable-alpine
+  ports:
+    - "8010:80"
+    - "443:443"
+  links:
+    - "php"
+  volumes:
+    - ./var/log/nginx:/var/log/nginx
+    - ./var/nginx/custom-locations:/etc/nginx/custom-locations
+  volumes_from:
+    - php
+php:
+  image: hansphung/dockerized-magento-php:7.0-fpm-alpine
+  links:
+    - "cache:rediscache"
+    - "sessions:redissession"
+    - "db:db"
+  volumes:
+    - ./var/www/html:/var/www/html
+  environment:
+    XDEBUG_REMOTE_HOST: 192.168.0.43
+db:
+  image: mysql:5.7
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+  volumes:
+    - ./var/lib/mysql:/var/lib/mysql
+cache:
+  image: redis:alpine
+sessions:
+  image: redis:alpine
+adminer:
+  image: adminer
+  ports:
+    - "8011:8080"
+  links:
+    - "db:db"
