@@ -1,5 +1,5 @@
 # magento-docker
-Custom docker setup for Magento example. Running Magento in a stack includes Nginx/PHP-FPM web server, Mysql, Redis
+Custom docker setup for Magento example using Nginx/PHP-FPM web server, mySQL and Redis. It is based on the `hansphung` docker images. 
 
 # Installation
 Get the clone by running the following command in the terminal:
@@ -17,6 +17,8 @@ Execute the following commands using the `magento` script which is a helpful wra
     - use `http://127.0.0.1:8010` for base URL (also configurable)
 
 Note: you can type `no` when it prompts to import sample data as it sometimes causes timeouts
+
+If everything goes well, you will see the following message at the end: 
 
 ```
 ✔ MySQL Version 5.7.28 found.
@@ -52,7 +54,7 @@ status     Prints the status of all docker containers
 stats      Displays live resource usage statistics of all containers
 magerun    Executes magerun in the magento root directory
 composer   Executes composer in the magento root directory
-enter      Enters the bash of a given container type (e.g. php, mysql)
+enter      Enters the bash of a given container type (e.g. php, db)
 destroy    Stops all containers and removes all data. 
 ```
 

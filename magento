@@ -226,7 +226,7 @@ case "$action" in
   stats      Displays live resource usage statistics of all containers
   magerun    Executes magerun in the magento root directory
   composer   Executes composer in the magento root directory
-  enter      Enters the bash of a given container type (e.g. php, mysql)
+  enter      Enters the bash of a given container type (e.g. php, db)
   destroy    Stops all containers and removes all data
 "
     ;;
